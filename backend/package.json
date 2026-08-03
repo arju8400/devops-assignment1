@@ -1,0 +1,17 @@
+{
+  "name": "quickbite-backend",
+  "version": "0.1.0",
+  "description": "QuickBite Food Delivery - REST API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  }
+}
