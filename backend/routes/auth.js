@@ -27,6 +27,17 @@ router.post('/verify-otp', (req, res) => {
   res.json({ message: 'Account verified', userId: user.id });
 });
 
+// QFD-10: Login using credentials (mobile + OTP session in this mock)
+router.post('/login', (req, res) => {
+  const { mobile } = req.body;
+  const user = users.find(u => u.mobile === mobile && u.verified);
+  if (!user) {
+    return res.status(401).json({ error: 'Account not found or not verified' });
+  }
+  const token = `mock-jwt-${user.id}-${Date.now()}`;
+  res.json({ message: 'Login successful', token, userId: user.id });
+});
+
 router.get('/ping', (req, res) => res.json({ pong: true }));
 
 module.exports = router;
