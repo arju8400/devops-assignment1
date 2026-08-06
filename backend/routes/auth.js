@@ -38,6 +38,26 @@ router.post('/login', (req, res) => {
   res.json({ message: 'Login successful', token, userId: user.id });
 });
 
+// QFD-11: Manage delivery addresses
+router.post('/:userId/addresses', (req, res) => {
+  const user = users.find(u => u.id === Number(req.params.userId));
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  const { label, line1, pincode, isDefault } = req.body;
+  if (!line1 || !/^\d{6}$/.test(pincode || '')) {
+    return res.status(400).json({ error: 'line1 and a valid 6-digit pincode are required' });
+  }
+  const address = { id: user.addresses.length + 1, label, line1, pincode, isDefault: !!isDefault };
+  if (isDefault) user.addresses.forEach(a => (a.isDefault = false));
+  user.addresses.push(address);
+  res.status(201).json(address);
+});
+
+router.get('/:userId/addresses', (req, res) => {
+  const user = users.find(u => u.id === Number(req.params.userId));
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user.addresses);
+});
+
 router.get('/ping', (req, res) => res.json({ pong: true }));
 
 module.exports = router;
