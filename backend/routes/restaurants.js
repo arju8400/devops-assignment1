@@ -21,4 +21,16 @@ router.get('/search', (req, res) => {
   res.json(results);
 });
 
+// QFD-13: Filter and sort restaurants by rating, delivery time and price
+router.get('/', (req, res) => {
+  let list = [...restaurants];
+  const { minRating, maxDeliveryTime, sortBy } = req.query;
+  if (minRating) list = list.filter(r => r.rating >= Number(minRating));
+  if (maxDeliveryTime) list = list.filter(r => r.deliveryTimeMin <= Number(maxDeliveryTime));
+  if (sortBy === 'rating') list.sort((a, b) => b.rating - a.rating);
+  if (sortBy === 'deliveryTime') list.sort((a, b) => a.deliveryTimeMin - b.deliveryTimeMin);
+  if (sortBy === 'price') list.sort((a, b) => a.priceLevel - b.priceLevel);
+  res.json(list);
+});
+
 module.exports = router;
