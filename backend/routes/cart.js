@@ -23,4 +23,17 @@ router.delete('/:userId/items/:itemId', (req, res) => {
 
 router.get('/:userId', (req, res) => res.json(carts[req.params.userId] || []));
 
+const COUPONS = { WELCOME10: 0.10, QUICK20: 0.20 };
+
+// QFD-17: Apply coupon code at checkout
+router.post('/:userId/coupon', (req, res) => {
+  const { userId } = req.params;
+  const { code } = req.body;
+  const discount = COUPONS[code];
+  if (!discount) return res.status(400).json({ error: 'Invalid or expired coupon code' });
+  const items = carts[userId] || [];
+  const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
+  res.json({ code, discount, subtotal, total: Number((subtotal * (1 - discount)).toFixed(2)) });
+});
+
 module.exports = router;
