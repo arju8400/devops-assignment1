@@ -10,6 +10,10 @@ const restaurantRoutes = require('./routes/restaurants');
 app.use('/api/restaurants', restaurantRoutes);
 const menuRoutes = require('./routes/menu');
 app.use('/api/menu', menuRoutes);
+const cartRoutes = require('./routes/cart');
+app.use('/api/cart', cartRoutes);
+const orderRoutes = require('./routes/orders');
+app.use('/api/orders', orderRoutes);
 
 const PORT = process.env.PORT || 4000;
 if (require.main === module) {
