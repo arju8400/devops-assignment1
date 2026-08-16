@@ -17,4 +17,15 @@ router.post('/', (req, res) => {
   res.status(201).json(payment);
 });
 
+// QFD-20: Generate invoice on successful payment
+router.get('/:id/invoice', (req, res) => {
+  const payment = payments.find(p => p.id === Number(req.params.id));
+  if (!payment) return res.status(404).json({ error: 'Payment not found' });
+  if (payment.status !== 'SUCCESS' && payment.status !== 'PENDING_ON_DELIVERY') {
+    return res.status(409).json({ error: 'Payment not completed yet' });
+  }
+  payment.invoiceId = `INV-${1000 + payment.id}`;
+  res.json({ invoiceId: payment.invoiceId, orderId: payment.orderId, amount: payment.amount, method: payment.method });
+});
+
 module.exports = router;
