@@ -14,6 +14,8 @@ const cartRoutes = require('./routes/cart');
 app.use('/api/cart', cartRoutes);
 const orderRoutes = require('./routes/orders');
 app.use('/api/orders', orderRoutes);
+const paymentRoutes = require('./routes/payments');
+app.use('/api/payments', paymentRoutes);
 
 const PORT = process.env.PORT || 4000;
 if (require.main === module) {
