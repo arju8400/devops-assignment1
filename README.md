@@ -66,5 +66,6 @@ Commits follow **Conventional Commits**:
 ## Roadmap
 
 - [x] Sprint 1 — Account Management, Restaurant Discovery, Cart, Payment (`v0.1.0`)
-- [ ] Sprint 2 — Order Tracking, Notifications, Delivery Agent Ops
+- [x] Sprint 2 — Push Notifications are now LIVE (order status alerts)
+- [ ] Sprint 2 — Order Tracking
 - [ ] Sprint 3 — Ratings & Reviews, Admin Dashboard
