@@ -67,5 +67,5 @@ Commits follow **Conventional Commits**:
 
 - [x] Sprint 1 — Account Management, Restaurant Discovery, Cart, Payment (`v0.1.0`)
 - [x] Sprint 2 — Order Tracking is now LIVE (real-time map + status polling)
-- [ ] Sprint 2 — Notifications
+- [x] Sprint 2 — Push Notifications are now LIVE (order status alerts)
 - [ ] Sprint 3 — Ratings & Reviews, Admin Dashboard
