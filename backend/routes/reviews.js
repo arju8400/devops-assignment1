@@ -15,4 +15,20 @@ router.post('/', (req, res) => {
   res.status(201).json(review);
 });
 
+// QFD-27: Restaurant owner responds to a review
+router.post('/:id/reply', (req, res) => {
+  const review = reviews.find(r => r.id === Number(req.params.id));
+  if (!review) return res.status(404).json({ error: 'Review not found' });
+  review.reply = req.body.reply;
+  res.json(review);
+});
+
+// Owners can flag abusive reviews for admin moderation
+router.post('/:id/flag', (req, res) => {
+  const review = reviews.find(r => r.id === Number(req.params.id));
+  if (!review) return res.status(404).json({ error: 'Review not found' });
+  review.flagged = true;
+  res.json(review);
+});
+
 module.exports = router;
