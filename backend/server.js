@@ -16,6 +16,16 @@ const orderRoutes = require('./routes/orders');
 app.use('/api/orders', orderRoutes);
 const paymentRoutes = require('./routes/payments');
 app.use('/api/payments', paymentRoutes);
+const trackingRoutes = require('./routes/tracking');
+app.use('/api/tracking', trackingRoutes);
+const notificationRoutes = require('./routes/notifications');
+app.use('/api/notifications', notificationRoutes);
+const deliveryRoutes = require('./routes/delivery');
+app.use('/api/delivery', deliveryRoutes);
+const reviewRoutes = require('./routes/reviews');
+app.use('/api/reviews', reviewRoutes);
+const adminRoutes = require('./routes/admin');
+app.use('/api/admin', adminRoutes);
 
 const PORT = process.env.PORT || 4000;
 if (require.main === module) {
