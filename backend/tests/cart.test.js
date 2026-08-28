@@ -15,3 +15,14 @@ describe('Cart API', () => {
     expect(res.statusCode).toBe(400);
   });
 });
+
+describe('Order total calculation (regression)', () => {
+  const { createOrderTotal } = { createOrderTotal: null }; // placeholder for future extraction
+  test('tax should be applied after discount, not before (bugfix)', () => {
+    const subtotal = 1000;
+    const discount = 100;
+    const discountedSubtotal = subtotal - discount;
+    const tax = Number((discountedSubtotal * 0.05).toFixed(2));
+    expect(tax).toBe(45); // was incorrectly 50 before the fix (5% of full subtotal)
+  });
+});

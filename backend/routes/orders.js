@@ -9,8 +9,9 @@ router.post('/', (req, res) => {
   if (!items || items.length === 0) return res.status(400).json({ error: 'Cart is empty' });
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
   const deliveryFee = 30;
-  const tax = Number((subtotal * 0.05).toFixed(2));
-  const total = Number((subtotal - (discount || 0) + deliveryFee + tax).toFixed(2));
+  const discountedSubtotal = subtotal - (discount || 0);
+  const tax = Number((discountedSubtotal * 0.05).toFixed(2)); // FIX: tax must be calculated after discount, not before
+  const total = Number((discountedSubtotal + deliveryFee + tax).toFixed(2));
   const order = { id: orders.length + 1, userId, items, addressId, subtotal, deliveryFee, tax, total, status: 'REVIEW' };
   orders.push(order);
   res.status(201).json(order);
