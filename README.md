@@ -66,6 +66,11 @@ Commits follow **Conventional Commits**:
 ## Roadmap
 
 - [x] Sprint 1 — Account Management, Restaurant Discovery, Cart, Payment (`v0.1.0`)
-- [x] Sprint 2 — Order Tracking is now LIVE (real-time map + status polling)
-- [x] Sprint 2 — Push Notifications are now LIVE (order status alerts)
-- [ ] Sprint 3 — Ratings & Reviews, Admin Dashboard
+- [x] Sprint 2 — Order Tracking, Notifications, Delivery Agent Ops (`v0.2.0`)
+- [x] Sprint 3 — Ratings & Reviews, Admin Dashboard (`v0.2.0`)
+- [x] Hotfix — Order tax-after-discount correction (`v0.2.1`)
+
+## Contributors
+
+- Arju — Project lead, backend architecture, payments, delivery, admin
+- Riya Sharma — Cart/coupons, restaurant discovery, reviews, QA/tests
