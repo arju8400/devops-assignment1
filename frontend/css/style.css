@@ -1,3 +1,30 @@
-body { font-family: Arial, sans-serif; margin: 0; background: #fafafa; }
-header { background: #d62828; color: white; padding: 1rem; }
-main { padding: 1rem; }
+* { box-sizing: border-box; }
+body { font-family: Arial, sans-serif; margin: 0; background: #fafafa; color: #222; }
+header { background: #d62828; color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+header h1 { margin: 0; font-size: 1.4rem; }
+#cartBtn { background: white; color: #d62828; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: bold; cursor: pointer; }
+main { padding: 1.5rem; }
+.hidden { display: none !important; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.card { background: white; border-radius: 10px; padding: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.1); cursor: pointer; transition: transform .1s; }
+.card:hover { transform: translateY(-2px); }
+.card h3 { margin: 0 0 .3rem 0; }
+.card p { margin: .2rem 0; color: #555; font-size: .9rem; }
+.menu-card { cursor: default; }
+.menu-card .price { font-weight: bold; color: #d62828; }
+.menu-card button { margin-top: .5rem; background: #d62828; color: white; border: none; padding: .4rem .8rem; border-radius: 6px; cursor: pointer; }
+.menu-card button:disabled { background: #ccc; cursor: not-allowed; }
+#backBtn { background: none; border: none; color: #d62828; font-weight: bold; cursor: pointer; padding: 0; margin-bottom: .5rem; }
+#cartPanel { position: fixed; top: 0; right: 0; width: 340px; height: 100%; background: white; box-shadow: -2px 0 8px rgba(0,0,0,0.15); padding: 1rem; overflow-y: auto; }
+.cart-header { display: flex; justify-content: space-between; align-items: center; }
+#closeCart { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
+.cart-line { display: flex; justify-content: space-between; padding: .4rem 0; border-bottom: 1px solid #eee; font-size: .9rem; }
+.coupon-row { display: flex; gap: .5rem; margin: .8rem 0; }
+.coupon-row input { flex: 1; padding: .4rem; }
+.coupon-row button, #checkoutBtn { background: #d62828; color: white; border: none; padding: .5rem; border-radius: 6px; cursor: pointer; }
+#checkoutBtn { width: 100%; margin-top: .5rem; }
+#checkoutBtn:disabled { background: #ccc; cursor: not-allowed; }
+#cartTotals { margin-top: .5rem; font-size: .9rem; }
+#cartTotals .total { font-weight: bold; font-size: 1.1rem; margin-top: .3rem; }
+#checkoutResult { margin-top: 1rem; padding: .8rem; border-radius: 6px; background: #eafbea; font-size: .9rem; }
+#checkoutResult:empty { display: none; }
