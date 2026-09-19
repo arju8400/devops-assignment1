@@ -4,7 +4,7 @@ QuickBite is an on-demand food delivery platform connecting **customers**,
 **restaurants**, **delivery agents** and **platform admins**. This repository
 contains the application source code that implements the Product Backlog
 defined in the QuickBite Jira project (see `docs/BACKLOG.md`).
-
+"Maintained by Arju & Bhumika Masane."
 ## Tech stack
 
 - **Backend:** Node.js + Express (REST API, mock in-memory data store)
